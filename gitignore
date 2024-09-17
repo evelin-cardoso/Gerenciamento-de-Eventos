@@ -1,0 +1,18 @@
+# Arquivos de configuração de ambiente
+.env
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+
+# Backups de banco de dados
+*.sql
+*.dump
+
+# Arquivos específicos de sistemas operacionais
+.DS_Store
+Thumbs.db
+
+# Diretórios de configuração de IDEs
+.idea/
+.vscode/
