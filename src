@@ -1,0 +1,42 @@
+CREATE DATABASE `Gerenciamento_de_Eventos`;
+USE `Gerenciamento_de_Eventos`;
+
+CREATE TABLE Eventos (
+  id_evento INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  data DATE NOT NULL,
+  local VARCHAR(255) NOT NULL,
+  descricao VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Participantes (
+  id_participante INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  telefone VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Inscricoes (
+  id_inscricao INT AUTO_INCREMENT PRIMARY KEY,
+  id_evento INT NOT NULL,
+  id_participante INT NOT NULL,
+  data_da_inscricao DATE NOT NULL,
+  FOREIGN KEY (id_evento) REFERENCES Eventos(id_evento),
+  FOREIGN KEY (id_participante) REFERENCES Participantes(id_participante)
+);
+
+-- Inserindo dados nas tabelas, omitindo os campos AUTO_INCREMENT
+INSERT INTO Eventos (nome, data, local, descricao) VALUES
+('Festa das Tilápias', '2024-05-11', 'Florianópolis', 'Festa que celebra as Tilápias'),
+('Evento das Conchas', '2024-03-07', 'Bahia', 'Evento de artesanato envolvendo conchas'),
+('Evento das Ondas Ambulantes', '2024-07-02', 'Havaí', 'Evento que celebra as ondas cheias');
+
+INSERT INTO Participantes (nome, email, telefone) VALUES
+('Cláudia Ferraz', 'claudiaaferrazz@gmail.com', '55 9063852'),
+('Joelma Maia', 'joelmamaia@gmail.com', '11 9582045'),
+('Daniel Muller', 'mullerdaniel@gmail.com', '48 94207651');
+
+INSERT INTO Inscricoes (id_evento, id_participante, data_da_inscricao) VALUES
+(1, 1, '2023-04-07'),
+(2, 2, '2022-02-09'),
+(3, 3, '2021-10-11');
